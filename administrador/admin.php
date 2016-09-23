@@ -2,6 +2,7 @@
 <?php
 $_POST['opcion'] = 2;
 include ("../cliente/m_cliente.php");
+include ("../cliente/m_reporte.php");
 include ("../cliente/m_propiedades.php");
 include ("../desarrollo/des.php");
 include ("../desarrollo/lugares.php");
@@ -30,7 +31,11 @@ else {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <style type="text/css">
-
+        .col-sm-4
+        {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
     </style>
 
 </head>
@@ -252,55 +257,62 @@ else {
                 </div>
 
                 <div class="modal-body">
-                    <div class="container-fluid">
-                        <div id="cab_rep">
-                        </div>
 
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Clave</th>
-                                    <th>Lugar</th>
-                                    <th>Tipo</th>
-                                    <th>Descripción del problema</th>
-                                    <th>Observación</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <select class="form-control" id="selLugar">
-                                            <?php
-                                                genera_lugares();
-                                            ?>
-                                        </select>
-
-                                    </td>
-                                    <td>
-                                        <select class="form-control" id="selTipo" onchange="cambioTipoDefecto();">
-                                            <?php
-                                                genera_tipo_defecto();
-                                            ?>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="form-control" id="selProblema">
-                                            <?php
-                                                genera_desc_probl(1);
-                                            ?>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control">
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
+                    <div id="cab_rep">
                     </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+
+                                <th>Lugar</th>
+                                <th>Tipo</th>
+                                <th>Descripción del problema</th>
+                                <th>Observación</th>
+                            </tr>
+                            <?php
+                                m_reporte();
+                            ?>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div style="background-color: lightcyan">
+                        <form>
+                            <div class="col-sm-4">
+                                <label for="sel1">Lugar:</label>
+                                <select class="form-control" id="selLugar">
+                                    <?php
+                                        genera_lugares();
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <label for="sel1">Tipo:</label>
+                                <select class="form-control" id="selTipo" onchange="cambioTipoDefecto();">
+                                    <?php
+                                        genera_tipo_defecto();
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                <label for="sel1">Descripcion del Problema:</label>
+                                <select class="form-control" id="selProblema">
+                                    <?php
+                                        genera_desc_probl(1);
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Observacion:</label>
+                                <input type="text" class="form-control input-lg" id="observacion">
+                            </div>
+                            <button type="submit" class="btn btn-default" onclick="alta_problema();">Agregar</button>
+                        </form>
+                    </div>
+
                 </div>
 
             </div>

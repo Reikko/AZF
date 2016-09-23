@@ -23,5 +23,20 @@ function conexion()
     return $enlace;
 }
 
+function ID($tabla)
+{
+    $enlace = conexion();
+    $id = null;
+    $query1 = "SELECT AUTO_INCREMENT FROM information_schema.TABLES
+                    WHERE TABLE_SCHEMA = 'azf'
+                    AND TABLE_NAME = '$tabla'"; //Devuelve Id que va generar
+    $result = mysqli_query($enlace, $query1);
+
+    if($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
+        $id = $row['AUTO_INCREMENT'];
+    }
+    return $id;
+}
+
 
 ?>

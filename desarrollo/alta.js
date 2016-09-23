@@ -48,3 +48,62 @@ function clear_campos_Cliente()
     $("#n_ext").val("");
 
 }
+
+function alta_problema()
+{
+    var checa = document.getElementById('formCliente').checkValidity();//Checa si se completo el forulario
+    //if(checa)
+    {
+        var n_rep = 9;
+        var lugar = $("#selLugar").val();
+        var prob = $("#selProblema").val();
+
+        var obs = $("#observacion").val();
+
+        $.ajax({
+            type: 'post',
+            data: {
+                opcion: "alta_problema",
+                lugar: lugar,
+                prob:prob,
+                n_rep:n_rep,
+                obs:obs
+            },
+            url: "../cliente/a_cliente.php"
+        }).done(function (data) {
+            alert(data);
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,7 +12,9 @@ switch ($_POST['opcion'])
     case "alta_cliente":
             alta_cliente();
         break;
-
+    case "alta_problema":
+            alta_problema();
+        break;
 }
 
 function alta_cliente()
@@ -42,21 +44,27 @@ function alta_cliente()
 
 }
 
-function ID($tabla)
+function alta_problema()
 {
     $enlace = conexion();
-    $id = null;
-    $query1 = "SELECT AUTO_INCREMENT FROM information_schema.TABLES
-                    WHERE TABLE_SCHEMA = 'azf'
-                    AND TABLE_NAME = '$tabla'"; //Devuelve Id que va generar
-    $result = mysqli_query($enlace, $query1);
-
-    if($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-        $id = $row['AUTO_INCREMENT'];
-
+    if ($enlace->connect_error)
+    {
+        die("Connection failed: " . $enlace->connect_error);
     }
-    return $id;
+    else
+    {
+
+            $query1 = "INSERT INTO tablareporte (num_reporte,id_lugar,num_defecto,obs_clie)
+                    VALUES ('$_POST[n_rep]','$_POST[lugar]','$_POST[prob]','$_POST[obs]')";
+            $result = mysqli_query($enlace, $query1);
+            echo $result;
+
+        mysqli_close($enlace);
+    }
+
 }
+
+
 
 
 

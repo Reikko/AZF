@@ -87,12 +87,12 @@ function cab_reporte($usuario)
         $result2 = mysqli_query($enlace, $query2);
 
 
-
+        $n_reporte = ID("reporte");
 
         echo " <table class=\"table\">";
         echo "
             <tr>
-                <td>N° Reporte:</td>
+                <td id='n_rep'>".$n_reporte."</td>
             </tr>
             ";
         echo "
