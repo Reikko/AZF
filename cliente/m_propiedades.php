@@ -35,7 +35,7 @@ function m_dt_propiedades($usuario)
                     <td>".$row["calle"]." #$row[num_ext] ,". $row["fraccionamiento"].", $row[estado] ,".$row["colonia"]."</td>
                     
                     <td>
-                    <button type=\"button\" href=\"#\" class=\"btn btn-primary btn-block btn-md\" id='$row[id_propiedad]' data-toggle=\"modal\" data-target=\"#alta_reporte\" data-backdrop=\"static\" onclick=\"g_d_reporte(this.id)\">Reportar fallo</button></td>
+                    <button type=\"button\" href=\"#\" class=\"btn btn-primary btn-block btn-md\" id='$row[id_propiedad]' data-toggle=\"modal\" data-target=\"#m_hora_cliente\" data-backdrop=\"static\" onclick=\"g_d_reporte(this.id)\">Reportar fallo</button></td>
                     
                 </tr>
             ";

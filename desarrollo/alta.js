@@ -71,10 +71,11 @@ function alta_problema()
             },
             url: "../cliente/a_cliente.php"
         }).done(function (data) {
-            alert(data);
+        gen_tab_reporte(n_rep);
         });
     }
 }
+
 
 
 

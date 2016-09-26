@@ -45,5 +45,19 @@ function g_d_reporte(pr)
 
         $("#cab_rep").html(data);
     });
+}
 
+function gen_tab_reporte(rep)
+{
+    $.ajax({
+        type: 'post',
+        data: {
+            opcion: "gen_tab_reporte",
+            rep: rep,
+        },
+        url: "../cliente/m_reporte.php"
+    }).done(function (data) {
+
+        $("#tablaReporte").html(data);
+    });
 }

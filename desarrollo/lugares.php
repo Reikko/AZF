@@ -11,6 +11,7 @@ switch ($_POST['opcion'])
 function genera_lugares()
 {
     $conn = conexion();
+    $imprime = "";
     if ($conn->connect_error)
     {
         die("Connection failed: " . $conn->connect_error);
@@ -21,18 +22,20 @@ function genera_lugares()
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
         {
-            echo"
-                <option value=".$row["id_lugar"].">".$row["nombre"]."</option>
+            $imprime.="
+                <option value=".$row["id_lugar"].">".$row["lugar"]."</option>
             ";
         }
         mysqli_free_result($result);
         mysqli_close($conn);
+        echo utf8_encode($imprime);
     }
 }
 
 function genera_tipo_defecto()
 {
     $conn = conexion();
+    $imprime = "";
     if ($conn->connect_error)
     {
         die("Connection failed: " . $conn->connect_error);
@@ -43,18 +46,20 @@ function genera_tipo_defecto()
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
         {
-            echo"
-                <option value=".$row["id_tipo"].">".$row["nombre"]."</option>
+            $imprime.="
+                <option value=".$row["id_tipo"].">".$row["nombre_tipo"]."</option>
             ";
         }
         mysqli_free_result($result);
         mysqli_close($conn);
+        echo utf8_encode($imprime);
     }
 }
 
 function genera_desc_probl($tipo)
 {
     $conn = conexion();
+    $imprime= "";
     if ($conn->connect_error)
     {
         die("Connection failed: " . $conn->connect_error);
@@ -65,12 +70,13 @@ function genera_desc_probl($tipo)
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
         {
-            echo"
+            $imprime.="
                 <option value=".$row["num_defecto"].">".$row["descripcion"]."</option>
             ";
         }
         mysqli_free_result($result);
         mysqli_close($conn);
+        echo utf8_encode($imprime);
     }
 }
 

@@ -36,6 +36,11 @@ else {
             padding-right: 3px;
             padding-left: 3px;
         }
+
+        .table-hover>tbody>tr:hover
+        {
+            background-color: lawngreen;
+        }
     </style>
 
 </head>
@@ -261,21 +266,10 @@ else {
                     <div id="cab_rep">
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-
-                                <th>Lugar</th>
-                                <th>Tipo</th>
-                                <th>Descripción del problema</th>
-                                <th>Observación</th>
-                            </tr>
-                            <?php
-                                m_reporte();
-                            ?>
-                            </thead>
-                        </table>
+                    <div class="table-responsive" id="tablaReporte">
+                        <?php
+                            m_reporte();
+                        ?>
                     </div>
 
                     <div style="background-color: lightcyan">
@@ -308,14 +302,72 @@ else {
                             <div class="form-group">
                                 <label for="sel1">Observacion:</label>
                                 <input type="text" class="form-control input-lg" id="observacion">
+
                             </div>
-                            <button type="submit" class="btn btn-default" onclick="alta_problema();">Agregar</button>
+                            <!--<button type="submit" class="btn btn-default" onclick="alta_problema();">Agregar</button>-->
+                            <input type="button" class="btn btn-info" value="Agregar" onclick="alta_problema();">
                         </form>
                     </div>
 
                 </div>
 
             </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal de horario del cliente-->
+    <div class="modal fade" id="m_hora_cliente" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Proporcionanos tu horario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <form>
+                                <p>Dia(s)</p>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Lunes</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Martes</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Miercoles</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Jueves</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Viernes</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="">Sábado</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-4">
+
+                        </div>
+                        <div class="col-sm-4">
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
